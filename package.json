@@ -1,0 +1,67 @@
+{
+  "name": "service-worker",
+  "version": "0.0.1",
+  "description": "Worker to deploy branches",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js --harmony",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rimraf app/dist",
+    "build:webpack": "webpack -p --config app/config/webpack.config.prod.js",
+    "build": "npm run clean && npm run build:webpack",
+    "dist": "npm run clean && NODE_ENV=production webpack --config config/webpack.config.prod.js --progress --colors",
+    "start-react": "node app/dev/server.js --progress --colors",
+    "lint": "eslint src"
+  },
+  "author": "MSL_Chaos",
+  "license": "MIT",
+  "babel": {
+    "env": {
+      "production": {
+        "plugins": [
+          "transform-react-constant-elements",
+          "transform-react-inline-elements"
+        ]
+      }
+    }
+  },
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "expose": "^0.1.4",
+    "express": "^4.14.0",
+    "history": "^4.5.1",
+    "material-ui": "^0.16.6",
+    "moment": "^2.17.1",
+    "raven": "^1.1.1",
+    "react-router-redux": "^4.0.7",
+    "redbox-react": "^1.3.3",
+    "redux-thunk": "^2.1.0",
+    "style-loader": "^0.13.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.21.0",
+    "babel-loader": "^6.2.10",
+    "babel-plugin-react-transform": "^2.0.2",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-stage-0": "^6.16.0",
+    "fs": "0.0.1-security",
+    "node-sass": "^4.3.0",
+    "ramda": "^0.23.0",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-redux": "^5.0.2",
+    "react-router": "^3.0.1",
+    "react-router-redux": "^4.0.7",
+    "react-tap-event-plugin": "^2.0.1",
+    "react-transform-catch-errors": "^1.0.2",
+    "react-transform-hmr": "^1.0.4",
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.1.0",
+    "sass-loader": "^4.1.1",
+    "script-loader": "^0.7.0",
+    "webpack": "^1.14.0",
+    "webpack-dev-middleware": "^1.9.0",
+    "webpack-hot-middleware": "^2.15.0"
+  }
+}
